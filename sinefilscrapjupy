@@ -31,9 +31,7 @@
    "execution_count": null,
    "metadata": {},
    "outputs": [],
-   "source": [
-    "name = ''"
-   ]
+   "source": []
   },
   {
    "cell_type": "code",
@@ -47,7 +45,8 @@
     "import numpy as np\n",
     "from time import sleep\n",
     "from random import randint\n",
-    "r = requests.get('https://www.sinefil.com/name/all/watched')\n",
+    "name = ''\n",
+    "r = requests.get('https://www.sinefil.com/%s/all/watched'%name)\n",
     "soup = BeautifulSoup(r.content,'lxml')\n",
     "movie_div = soup.find_all('div',attrs={'class':'col-lg-9'})\n",
     "\n",
@@ -154,13 +153,6 @@
    "source": [
     "myMovies.head(5)"
    ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": []
   }
  ]
 }
