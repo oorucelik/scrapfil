@@ -32,22 +32,14 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "name = ''"
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": [
     "import requests\n",
     "from bs4 import BeautifulSoup\n",
     "import pandas as pd\n",
     "import numpy as np\n",
     "from time import sleep\n",
     "from random import randint\n",
-    "r = requests.get('https://www.sinefil.com/name/all/watched')\n",
+    "name = ''\n",
+    "r = requests.get('https://www.sinefil.com/%s/all/watched'%name)\n",
     "soup = BeautifulSoup(r.content,'lxml')\n",
     "movie_div = soup.find_all('div',attrs={'class':'col-lg-9'})\n",
     "\n",
@@ -118,7 +110,7 @@
     "                    imdbScores.append(scoresTable[0].text)\n",
     "    print('Page %d is done'%page)\n",
     "    sleep(randint(2,10))\n",
-    "    r = requests.get('https://www.sinefil.com/name/all/watched/%d'%page)\n",
+    "    r = requests.get('https://www.sinefil.com/%s/all/watched/%d'%(name,page))\n",
     "    soup = BeautifulSoup(r.content,'lxml')\n",
     "    movie_div = soup.find_all('div',attrs={'class':'col-lg-9'})\n"
    ]
@@ -154,13 +146,6 @@
    "source": [
     "myMovies.head(5)"
    ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "metadata": {},
-   "outputs": [],
-   "source": []
   }
  ]
 }
